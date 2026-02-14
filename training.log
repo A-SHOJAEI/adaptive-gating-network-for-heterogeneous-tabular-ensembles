@@ -1,0 +1,392 @@
+2026-02-10 16:22:26,366 - __main__ - INFO - Starting adaptive gating ensemble training
+2026-02-10 16:22:26,366 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.utils.config - INFO - Random seeds set to 42
+2026-02-10 16:22:26,366 - __main__ - INFO - Loading dataset
+2026-02-10 16:22:26,366 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.data.loader - INFO - Loading dataset: synthetic_heterogeneous_benchmark
+2026-02-10 16:22:26,366 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.data.loader - INFO - Generating synthetic dataset with 10000 samples, 20 features
+2026-02-10 16:22:26,387 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.data.loader - INFO - Generated dataset shape: (10000, 20), class distribution: {1: 5023, 0: 4977}
+2026-02-10 16:22:26,387 - __main__ - INFO - Dataset loaded: 10000 samples, 20 features
+2026-02-10 16:22:26,387 - __main__ - INFO - Class distribution: {1: 5023, 0: 4977}
+2026-02-10 16:22:26,387 - __main__ - INFO - Splitting dataset
+2026-02-10 16:22:26,391 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.data.loader - INFO - Dataset split - Train: 7000, Val: 1000, Test: 2000
+2026-02-10 16:22:26,391 - __main__ - INFO - Initializing preprocessor
+2026-02-10 16:22:26,391 - __main__ - INFO - Initializing adaptive gating ensemble
+2026-02-10 16:22:26,391 - __main__ - INFO - Initializing trainer
+2026-02-10 16:22:26,391 - __main__ - INFO - Starting training
+2026-02-10 16:22:26,391 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.training.trainer - INFO - Starting ensemble training
+2026-02-10 16:22:28,093 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.training.trainer - INFO - MLflow tracking enabled
+2026-02-10 16:22:28,093 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.training.trainer - INFO - Preprocessing training data
+2026-02-10 16:22:28,093 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.data.preprocessing - INFO - Fitting preprocessor on training data
+2026-02-10 16:22:28,096 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.data.preprocessing - INFO - Preprocessor fitted on 20 features
+2026-02-10 16:22:28,100 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.models.model - INFO - Fitting adaptive gating ensemble on 7000 samples
+2026-02-10 16:22:28,100 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.models.model - INFO - Creating default base models (linear, tree-based, gradient boosting)
+2026-02-10 16:22:28,100 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.models.model - INFO - Training 4 base models
+2026-02-10 16:22:28,100 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.models.model - INFO - Training base model 0: LogisticRegression
+2026-02-10 16:22:28,112 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.models.model - INFO - Training base model 1: RandomForestClassifier
+2026-02-10 16:22:28,285 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.models.model - INFO - Training base model 2: XGBClassifier
+2026-02-10 16:22:28,662 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.models.model - INFO - Training base model 3: LGBMClassifier
+2026-02-10 16:22:28,910 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.models.model - INFO - Computing sample complexity indicators
+2026-02-10 16:22:28,919 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.models.model - INFO - Computing oracle model assignments
+2026-02-10 16:22:28,920 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.training.trainer - ERROR - Training failed: 1
+2026-02-10 16:22:28,929 - __main__ - ERROR - Training failed: 1
+Traceback (most recent call last):
+  File "/home/alireza/anaconda3/lib/python3.13/site-packages/pandas/core/indexes/base.py", line 3805, in get_loc
+    return self._engine.get_loc(casted_key)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 2606, in pandas._libs.hashtable.Int64HashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 2630, in pandas._libs.hashtable.Int64HashTable.get_item
+KeyError: 1
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/media/alireza/D29856C39856A62F/AI project/projects/adaptive-gating-network-for-heterogeneous-tabular-ensembles/scripts/train.py", line 130, in main
+    history = trainer.train(
+        X_train=X_train,
+    ...<3 lines>...
+        track_mlflow=training_config.get("track_mlflow", True),
+    )
+  File "/media/alireza/D29856C39856A62F/AI project/projects/adaptive-gating-network-for-heterogeneous-tabular-ensembles/src/adaptive_gating_network_for_heterogeneous_tabular_ensembles/training/trainer.py", line 120, in train
+    self.model.fit(X_train_processed, y_train, X_val_processed, y_val)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/media/alireza/D29856C39856A62F/AI project/projects/adaptive-gating-network-for-heterogeneous-tabular-ensembles/src/adaptive_gating_network_for_heterogeneous_tabular_ensembles/models/model.py", line 168, in fit
+    model_assignments = self._compute_oracle_assignments(
+        y_array, base_predictions, sample_complexity
+    )
+  File "/media/alireza/D29856C39856A62F/AI project/projects/adaptive-gating-network-for-heterogeneous-tabular-ensembles/src/adaptive_gating_network_for_heterogeneous_tabular_ensembles/models/model.py", line 229, in _compute_oracle_assignments
+    abs(sample_complexity[i] - model_complexities[j]) for j in correct_models
+        ~~~~~~~~~~~~~~~~~^^^
+  File "/home/alireza/anaconda3/lib/python3.13/site-packages/pandas/core/series.py", line 1121, in __getitem__
+    return self._get_value(key)
+           ~~~~~~~~~~~~~~~^^^^^
+  File "/home/alireza/anaconda3/lib/python3.13/site-packages/pandas/core/series.py", line 1237, in _get_value
+    loc = self.index.get_loc(label)
+  File "/home/alireza/anaconda3/lib/python3.13/site-packages/pandas/core/indexes/base.py", line 3812, in get_loc
+    raise KeyError(key) from err
+KeyError: 1
+2026-02-10 16:25:31,852 - __main__ - INFO - Starting adaptive gating ensemble training
+2026-02-10 16:25:31,852 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.utils.config - INFO - Random seeds set to 42
+2026-02-10 16:25:31,852 - __main__ - INFO - Loading dataset
+2026-02-10 16:25:31,852 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.data.loader - INFO - Loading dataset: synthetic_heterogeneous_benchmark
+2026-02-10 16:25:31,852 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.data.loader - INFO - Generating synthetic dataset with 10000 samples, 20 features
+2026-02-10 16:25:31,868 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.data.loader - INFO - Generated dataset shape: (10000, 20), class distribution: {1: 5023, 0: 4977}
+2026-02-10 16:25:31,868 - __main__ - INFO - Dataset loaded: 10000 samples, 20 features
+2026-02-10 16:25:31,868 - __main__ - INFO - Class distribution: {1: 5023, 0: 4977}
+2026-02-10 16:25:31,868 - __main__ - INFO - Splitting dataset
+2026-02-10 16:25:31,872 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.data.loader - INFO - Dataset split - Train: 7000, Val: 1000, Test: 2000
+2026-02-10 16:25:31,872 - __main__ - INFO - Initializing preprocessor
+2026-02-10 16:25:31,872 - __main__ - INFO - Initializing adaptive gating ensemble
+2026-02-10 16:25:31,872 - __main__ - INFO - Initializing trainer
+2026-02-10 16:25:31,872 - __main__ - INFO - Starting training
+2026-02-10 16:25:31,872 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.training.trainer - INFO - Starting ensemble training
+2026-02-10 16:25:32,643 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.training.trainer - INFO - MLflow tracking enabled
+2026-02-10 16:25:32,643 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.training.trainer - INFO - Preprocessing training data
+2026-02-10 16:25:32,643 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.data.preprocessing - INFO - Fitting preprocessor on training data
+2026-02-10 16:25:32,645 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.data.preprocessing - INFO - Preprocessor fitted on 20 features
+2026-02-10 16:25:32,649 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.models.model - INFO - Fitting adaptive gating ensemble on 7000 samples
+2026-02-10 16:25:32,649 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.models.model - INFO - Creating default base models (linear, tree-based, gradient boosting)
+2026-02-10 16:25:32,649 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.models.model - INFO - Training 4 base models
+2026-02-10 16:25:32,649 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.models.model - INFO - Training base model 0: LogisticRegression
+2026-02-10 16:25:32,659 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.models.model - INFO - Training base model 1: RandomForestClassifier
+2026-02-10 16:25:32,815 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.models.model - INFO - Training base model 2: XGBClassifier
+2026-02-10 16:25:33,169 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.models.model - INFO - Training base model 3: LGBMClassifier
+2026-02-10 16:25:33,413 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.models.model - INFO - Computing sample complexity indicators
+2026-02-10 16:25:33,415 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.models.model - INFO - Computing oracle model assignments
+2026-02-10 16:25:33,434 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.models.model - INFO - Oracle assignments distribution: {np.int64(0): np.int64(3369), np.int64(1): np.int64(1947), np.int64(2): np.int64(607), np.int64(3): np.int64(1077)}
+2026-02-10 16:25:33,434 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.models.model - INFO - Training gating network
+2026-02-10 16:25:33,434 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.models.components - INFO - Training gating network on 7000 samples
+2026-02-10 16:25:33,434 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.models.components - WARNING - MLPClassifier does not support sample_weight; ignoring weights
+2026-02-10 16:25:33,979 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.models.components - INFO - Gating network training complete. Best validation score: 0.6786
+2026-02-10 16:25:33,979 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.models.model - INFO - Adaptive gating ensemble training complete
+2026-02-10 16:25:34,029 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.training.trainer - INFO - Training complete - Train F1: 0.8956, Val F1: 0.8030, Train Acc: 0.8956, Val Acc: 0.8030
+2026-02-10 16:25:34,059 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.training.trainer - INFO - Checkpoint saved to checkpoints/best_model.pkl
+2026-02-10 16:25:34,059 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.training.trainer - INFO - New best model saved with val_f1: 0.8030
+2026-02-10 16:25:34,069 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.training.trainer - INFO - Training history saved to results/training_history.json
+2026-02-10 16:25:34,070 - __main__ - INFO - Evaluating on test set
+2026-02-10 16:25:34,117 - __main__ - INFO - Test Accuracy: 0.8050
+2026-02-10 16:25:34,117 - __main__ - INFO - Test F1 Score: 0.8050
+2026-02-10 16:25:34,119 - __main__ - INFO - 
+Classification Report:
+              precision    recall  f1-score   support
+
+           0       0.80      0.81      0.81       995
+           1       0.81      0.80      0.80      1005
+
+    accuracy                           0.81      2000
+   macro avg       0.81      0.81      0.80      2000
+weighted avg       0.81      0.81      0.80      2000
+
+2026-02-10 16:25:34,120 - __main__ - INFO - Training complete. Results saved to results
+2026-02-10 16:26:31,135 - __main__ - INFO - Starting adaptive gating ensemble training
+2026-02-10 16:26:31,135 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.utils.config - INFO - Random seeds set to 42
+2026-02-10 16:26:31,135 - __main__ - INFO - Loading dataset
+2026-02-10 16:26:31,135 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.data.loader - INFO - Loading dataset: synthetic_heterogeneous_benchmark
+2026-02-10 16:26:31,135 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.data.loader - INFO - Generating synthetic dataset with 10000 samples, 20 features
+2026-02-10 16:26:31,153 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.data.loader - INFO - Generated dataset shape: (10000, 20), class distribution: {1: 5023, 0: 4977}
+2026-02-10 16:26:31,153 - __main__ - INFO - Dataset loaded: 10000 samples, 20 features
+2026-02-10 16:26:31,153 - __main__ - INFO - Class distribution: {1: 5023, 0: 4977}
+2026-02-10 16:26:31,153 - __main__ - INFO - Splitting dataset
+2026-02-10 16:26:31,157 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.data.loader - INFO - Dataset split - Train: 7000, Val: 1000, Test: 2000
+2026-02-10 16:26:31,157 - __main__ - INFO - Initializing preprocessor
+2026-02-10 16:26:31,157 - __main__ - INFO - Initializing adaptive gating ensemble
+2026-02-10 16:26:31,157 - __main__ - INFO - Initializing trainer
+2026-02-10 16:26:31,157 - __main__ - INFO - Starting training
+2026-02-10 16:26:31,157 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.training.trainer - INFO - Starting ensemble training
+2026-02-10 16:26:31,931 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.training.trainer - INFO - MLflow tracking enabled
+2026-02-10 16:26:31,931 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.training.trainer - INFO - Preprocessing training data
+2026-02-10 16:26:31,931 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.data.preprocessing - INFO - Fitting preprocessor on training data
+2026-02-10 16:26:31,933 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.data.preprocessing - INFO - Preprocessor fitted on 20 features
+2026-02-10 16:26:31,937 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.models.model - INFO - Fitting adaptive gating ensemble on 7000 samples
+2026-02-10 16:26:31,937 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.models.model - INFO - Creating default base models (linear, tree-based, gradient boosting)
+2026-02-10 16:26:31,937 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.models.model - INFO - Training 4 base models
+2026-02-10 16:26:31,937 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.models.model - INFO - Training base model 0: LogisticRegression
+2026-02-10 16:26:31,946 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.models.model - INFO - Training base model 1: RandomForestClassifier
+2026-02-10 16:26:32,103 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.models.model - INFO - Training base model 2: XGBClassifier
+2026-02-10 16:26:32,461 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.models.model - INFO - Training base model 3: LGBMClassifier
+2026-02-10 16:26:32,753 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.models.model - INFO - Computing sample complexity indicators
+2026-02-10 16:26:32,756 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.models.model - INFO - Computing oracle model assignments
+2026-02-10 16:26:32,770 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.models.model - INFO - Oracle assignments distribution: {np.int64(0): np.int64(3369), np.int64(1): np.int64(1947), np.int64(2): np.int64(607), np.int64(3): np.int64(1077)}
+2026-02-10 16:26:32,771 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.models.model - INFO - Training gating network
+2026-02-10 16:26:32,771 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.models.components - INFO - Training gating network on 7000 samples
+2026-02-10 16:26:33,294 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.models.components - INFO - Gating network training complete. Best validation score: 0.6786
+2026-02-10 16:26:33,294 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.models.model - INFO - Adaptive gating ensemble training complete
+2026-02-10 16:26:33,341 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.training.trainer - INFO - Training complete - Train F1: 0.8956, Val F1: 0.8030, Train Acc: 0.8956, Val Acc: 0.8030
+2026-02-10 16:26:33,369 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.training.trainer - INFO - Checkpoint saved to checkpoints/best_model.pkl
+2026-02-10 16:26:33,369 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.training.trainer - INFO - New best model saved with val_f1: 0.8030
+2026-02-10 16:26:33,379 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.training.trainer - INFO - Training history saved to results/training_history.json
+2026-02-10 16:26:33,379 - __main__ - INFO - Evaluating on test set
+2026-02-10 16:26:33,426 - __main__ - INFO - Test Accuracy: 0.8050
+2026-02-10 16:26:33,426 - __main__ - INFO - Test F1 Score: 0.8050
+2026-02-10 16:26:33,428 - __main__ - INFO - 
+Classification Report:
+              precision    recall  f1-score   support
+
+           0       0.80      0.81      0.81       995
+           1       0.81      0.80      0.80      1005
+
+    accuracy                           0.81      2000
+   macro avg       0.81      0.81      0.80      2000
+weighted avg       0.81      0.81      0.80      2000
+
+2026-02-10 16:26:33,429 - __main__ - INFO - Training complete. Results saved to results
+2026-02-10 16:27:26,338 - __main__ - INFO - Starting adaptive gating ensemble training
+2026-02-10 16:27:26,338 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.utils.config - INFO - Random seeds set to 42
+2026-02-10 16:27:26,338 - __main__ - INFO - Loading dataset
+2026-02-10 16:27:26,338 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.data.loader - INFO - Loading dataset: synthetic_heterogeneous_benchmark
+2026-02-10 16:27:26,338 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.data.loader - INFO - Generating synthetic dataset with 10000 samples, 20 features
+2026-02-10 16:27:26,354 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.data.loader - INFO - Generated dataset shape: (10000, 20), class distribution: {1: 5023, 0: 4977}
+2026-02-10 16:27:26,354 - __main__ - INFO - Dataset loaded: 10000 samples, 20 features
+2026-02-10 16:27:26,354 - __main__ - INFO - Class distribution: {1: 5023, 0: 4977}
+2026-02-10 16:27:26,354 - __main__ - INFO - Splitting dataset
+2026-02-10 16:27:26,358 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.data.loader - INFO - Dataset split - Train: 7000, Val: 1000, Test: 2000
+2026-02-10 16:27:26,358 - __main__ - INFO - Initializing preprocessor
+2026-02-10 16:27:26,358 - __main__ - INFO - Initializing adaptive gating ensemble
+2026-02-10 16:27:26,358 - __main__ - INFO - Initializing trainer
+2026-02-10 16:27:26,358 - __main__ - INFO - Starting training
+2026-02-10 16:27:26,358 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.training.trainer - INFO - Starting ensemble training
+2026-02-10 16:27:27,145 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.training.trainer - INFO - MLflow tracking enabled
+2026-02-10 16:27:27,145 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.training.trainer - INFO - Preprocessing training data
+2026-02-10 16:27:27,145 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.data.preprocessing - INFO - Fitting preprocessor on training data
+2026-02-10 16:27:27,147 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.data.preprocessing - INFO - Preprocessor fitted on 20 features
+2026-02-10 16:27:27,151 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.models.model - INFO - Fitting adaptive gating ensemble on 7000 samples
+2026-02-10 16:27:27,151 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.models.model - INFO - Creating default base models (linear, tree-based, gradient boosting)
+2026-02-10 16:27:27,152 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.models.model - INFO - Training 4 base models
+2026-02-10 16:27:27,152 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.models.model - INFO - Training base model 0: LogisticRegression
+2026-02-10 16:27:27,163 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.models.model - INFO - Training base model 1: RandomForestClassifier
+2026-02-10 16:27:27,327 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.models.model - INFO - Training base model 2: XGBClassifier
+2026-02-10 16:27:27,693 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.models.model - INFO - Training base model 3: LGBMClassifier
+2026-02-10 16:27:27,928 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.models.model - INFO - Computing sample complexity indicators
+2026-02-10 16:27:27,930 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.models.model - INFO - Computing oracle model assignments
+2026-02-10 16:27:27,944 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.models.model - INFO - Oracle assignments distribution: {np.int64(0): np.int64(3369), np.int64(1): np.int64(1947), np.int64(2): np.int64(607), np.int64(3): np.int64(1077)}
+2026-02-10 16:27:27,944 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.models.model - INFO - Training gating network
+2026-02-10 16:27:27,944 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.models.components - INFO - Training gating network on 7000 samples
+2026-02-10 16:27:27,944 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.models.components - WARNING - MLPClassifier does not support sample_weight; ignoring weights
+2026-02-10 16:27:28,498 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.models.components - INFO - Gating network training complete. Best validation score: 0.6786
+2026-02-10 16:27:28,498 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.models.model - INFO - Adaptive gating ensemble training complete
+2026-02-10 16:27:28,549 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.training.trainer - INFO - Training complete - Train F1: 0.8956, Val F1: 0.8030, Train Acc: 0.8956, Val Acc: 0.8030
+2026-02-10 16:27:28,579 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.training.trainer - INFO - Checkpoint saved to checkpoints/best_model.pkl
+2026-02-10 16:27:28,579 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.training.trainer - INFO - New best model saved with val_f1: 0.8030
+2026-02-10 16:27:28,589 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.training.trainer - INFO - Training history saved to results/training_history.json
+2026-02-10 16:27:28,589 - __main__ - INFO - Evaluating on test set
+2026-02-10 16:27:28,648 - __main__ - INFO - Test Accuracy: 0.8050
+2026-02-10 16:27:28,648 - __main__ - INFO - Test F1 Score: 0.8050
+2026-02-10 16:27:28,652 - __main__ - INFO - 
+Classification Report:
+              precision    recall  f1-score   support
+
+           0       0.80      0.81      0.81       995
+           1       0.81      0.80      0.80      1005
+
+    accuracy                           0.81      2000
+   macro avg       0.81      0.81      0.80      2000
+weighted avg       0.81      0.81      0.80      2000
+
+2026-02-10 16:27:28,652 - __main__ - INFO - Training complete. Results saved to results
+2026-02-10 16:28:33,375 - __main__ - INFO - Starting adaptive gating ensemble training
+2026-02-10 16:28:33,375 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.utils.config - INFO - Random seeds set to 42
+2026-02-10 16:28:33,375 - __main__ - INFO - Loading dataset
+2026-02-10 16:28:33,375 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.data.loader - INFO - Loading dataset: synthetic_heterogeneous_benchmark
+2026-02-10 16:28:33,375 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.data.loader - INFO - Generating synthetic dataset with 10000 samples, 20 features
+2026-02-10 16:28:33,381 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.data.loader - INFO - Generated dataset shape: (10000, 20), class distribution: {1: 5023, 0: 4977}
+2026-02-10 16:28:33,381 - __main__ - INFO - Dataset loaded: 10000 samples, 20 features
+2026-02-10 16:28:33,381 - __main__ - INFO - Class distribution: {1: 5023, 0: 4977}
+2026-02-10 16:28:33,381 - __main__ - INFO - Splitting dataset
+2026-02-10 16:28:33,385 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.data.loader - INFO - Dataset split - Train: 7000, Val: 1000, Test: 2000
+2026-02-10 16:28:33,385 - __main__ - INFO - Initializing preprocessor
+2026-02-10 16:28:33,385 - __main__ - INFO - Initializing adaptive gating ensemble
+2026-02-10 16:28:33,385 - __main__ - INFO - Initializing trainer
+2026-02-10 16:28:33,385 - __main__ - INFO - Starting training
+2026-02-10 16:28:33,385 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.training.trainer - INFO - Starting ensemble training
+2026-02-10 16:28:34,064 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.training.trainer - INFO - MLflow tracking enabled
+2026-02-10 16:28:34,064 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.training.trainer - INFO - Preprocessing training data
+2026-02-10 16:28:34,064 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.data.preprocessing - INFO - Fitting preprocessor on training data
+2026-02-10 16:28:34,066 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.data.preprocessing - INFO - Preprocessor fitted on 20 features
+2026-02-10 16:28:34,070 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.models.model - INFO - Fitting adaptive gating ensemble on 7000 samples
+2026-02-10 16:28:34,070 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.models.model - INFO - Creating default base models (linear, tree-based, gradient boosting)
+2026-02-10 16:28:34,070 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.models.model - INFO - Training 4 base models
+2026-02-10 16:28:34,070 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.models.model - INFO - Training base model 0: LogisticRegression
+2026-02-10 16:28:34,075 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.models.model - INFO - Training base model 1: RandomForestClassifier
+2026-02-10 16:28:34,246 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.models.model - INFO - Training base model 2: XGBClassifier
+2026-02-10 16:28:59,261 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.models.model - INFO - Training base model 3: LGBMClassifier
+2026-02-10 16:28:59,533 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.models.model - INFO - Computing sample complexity indicators
+2026-02-10 16:28:59,540 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.models.model - INFO - Computing oracle model assignments
+2026-02-10 16:28:59,556 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.models.model - INFO - Oracle assignments distribution: {np.int64(0): np.int64(3369), np.int64(1): np.int64(1947), np.int64(2): np.int64(607), np.int64(3): np.int64(1077)}
+2026-02-10 16:28:59,556 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.models.model - INFO - Training gating network
+2026-02-10 16:28:59,557 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.models.components - INFO - Training gating network on 7000 samples
+2026-02-10 16:28:59,557 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.models.components - WARNING - MLPClassifier does not support sample_weight; ignoring weights
+2026-02-10 16:29:00,012 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.models.components - INFO - Gating network training complete. Best validation score: 0.6786
+2026-02-10 16:29:00,012 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.models.model - INFO - Adaptive gating ensemble training complete
+2026-02-10 16:29:00,222 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.training.trainer - INFO - Training complete - Train F1: 0.8956, Val F1: 0.8030, Train Acc: 0.8956, Val Acc: 0.8030
+2026-02-10 16:29:00,273 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.training.trainer - INFO - Checkpoint saved to checkpoints/best_model.pkl
+2026-02-10 16:29:00,274 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.training.trainer - INFO - New best model saved with val_f1: 0.8030
+2026-02-10 16:29:00,285 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.training.trainer - INFO - Training history saved to results/training_history.json
+2026-02-10 16:29:00,286 - __main__ - INFO - Evaluating on test set
+2026-02-10 16:29:00,429 - __main__ - INFO - Test Accuracy: 0.8050
+2026-02-10 16:29:00,429 - __main__ - INFO - Test F1 Score: 0.8050
+2026-02-10 16:29:00,435 - __main__ - INFO - 
+Classification Report:
+              precision    recall  f1-score   support
+
+           0       0.80      0.81      0.81       995
+           1       0.81      0.80      0.80      1005
+
+    accuracy                           0.81      2000
+   macro avg       0.81      0.81      0.80      2000
+weighted avg       0.81      0.81      0.80      2000
+
+2026-02-10 16:29:00,435 - __main__ - INFO - Training complete. Results saved to results
+2026-02-13 15:01:52,084 - __main__ - INFO - Starting adaptive gating ensemble training
+2026-02-13 15:01:52,084 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.utils.config - INFO - Random seeds set to 42
+2026-02-13 15:01:52,084 - __main__ - INFO - Loading dataset
+2026-02-13 15:01:52,085 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.data.loader - INFO - Loading dataset: synthetic_heterogeneous_benchmark
+2026-02-13 15:01:52,085 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.data.loader - INFO - Generating synthetic dataset with 10000 samples, 20 features
+2026-02-13 15:01:52,093 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.data.loader - INFO - Generated dataset shape: (10000, 20), class distribution: {1: 5023, 0: 4977}
+2026-02-13 15:01:52,093 - __main__ - INFO - Dataset loaded: 10000 samples, 20 features
+2026-02-13 15:01:52,093 - __main__ - INFO - Class distribution: {1: 5023, 0: 4977}
+2026-02-13 15:01:52,093 - __main__ - INFO - Splitting dataset
+2026-02-13 15:01:52,099 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.data.loader - INFO - Dataset split - Train: 7000, Val: 1000, Test: 2000
+2026-02-13 15:01:52,099 - __main__ - INFO - Initializing preprocessor
+2026-02-13 15:01:52,099 - __main__ - INFO - Initializing adaptive gating ensemble
+2026-02-13 15:01:52,100 - __main__ - INFO - Initializing trainer
+2026-02-13 15:01:52,100 - __main__ - INFO - Starting training
+2026-02-13 15:01:52,100 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.training.trainer - INFO - Starting ensemble training
+2026-02-13 15:01:53,558 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.training.trainer - INFO - MLflow tracking enabled
+2026-02-13 15:01:53,558 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.training.trainer - INFO - Preprocessing training data
+2026-02-13 15:01:53,558 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.data.preprocessing - INFO - Fitting preprocessor on training data
+2026-02-13 15:01:53,562 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.data.preprocessing - INFO - Preprocessor fitted on 20 features
+2026-02-13 15:01:53,569 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.models.model - INFO - Fitting adaptive gating ensemble on 7000 samples
+2026-02-13 15:01:53,569 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.models.model - INFO - Creating default base models (linear, tree-based, gradient boosting)
+2026-02-13 15:01:53,570 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.models.model - INFO - Training 4 base models
+2026-02-13 15:01:53,570 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.models.model - INFO - Training base model 0: LogisticRegression
+2026-02-13 15:01:53,580 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.models.model - INFO - Training base model 1: RandomForestClassifier
+2026-02-13 15:01:53,862 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.models.model - INFO - Training base model 2: XGBClassifier
+2026-02-13 15:02:14,717 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.models.model - INFO - Training base model 3: LGBMClassifier
+2026-02-13 15:03:03,080 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.models.model - INFO - Computing sample complexity indicators
+2026-02-13 15:03:03,092 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.models.model - INFO - Computing oracle model assignments
+2026-02-13 15:03:03,125 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.models.model - INFO - Oracle assignments distribution: {np.int64(0): np.int64(23), np.int64(1): np.int64(4263), np.int64(2): np.int64(2218), np.int64(3): np.int64(496)}
+2026-02-13 15:03:03,125 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.models.model - INFO - Training gating network
+2026-02-13 15:03:03,133 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.models.components - INFO - Training PyTorch gating network on 7000 samples
+2026-02-13 15:03:06,467 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.models.components - INFO - Epoch 20/200: train_loss=0.4954, val_loss=0.4380, val_acc=0.8400
+2026-02-13 15:03:08,544 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.models.components - INFO - Epoch 40/200: train_loss=0.4540, val_loss=0.4080, val_acc=0.8671
+2026-02-13 15:03:11,028 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.models.components - INFO - Epoch 60/200: train_loss=0.4263, val_loss=0.3925, val_acc=0.8829
+2026-02-13 15:03:13,166 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.models.components - INFO - Epoch 80/200: train_loss=0.3981, val_loss=0.3828, val_acc=0.8871
+2026-02-13 15:03:14,280 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.models.components - INFO - Early stopping at epoch 90
+2026-02-13 15:03:14,281 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.models.components - INFO - Gating network training complete. Best validation loss: 0.3828
+2026-02-13 15:03:14,281 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.models.model - INFO - Adaptive gating ensemble training complete
+2026-02-13 15:03:14,419 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.training.trainer - INFO - Training complete - Train F1: 0.9574, Val F1: 0.8500, Train Acc: 0.9574, Val Acc: 0.8500
+2026-02-13 15:03:14,485 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.training.trainer - INFO - Checkpoint saved to checkpoints/best_model.pkl
+2026-02-13 15:03:14,485 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.training.trainer - INFO - New best model saved with val_f1: 0.8500
+2026-02-13 15:03:14,499 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.training.trainer - INFO - Training history saved to results/training_history.json
+2026-02-13 15:03:14,499 - __main__ - INFO - Evaluating on test set
+2026-02-13 15:03:14,633 - __main__ - INFO - Test Accuracy: 0.8485
+2026-02-13 15:03:14,633 - __main__ - INFO - Test F1 Score: 0.8485
+2026-02-13 15:03:14,638 - __main__ - INFO - 
+Classification Report:
+              precision    recall  f1-score   support
+
+           0       0.84      0.86      0.85       995
+           1       0.86      0.84      0.85      1005
+
+    accuracy                           0.85      2000
+   macro avg       0.85      0.85      0.85      2000
+weighted avg       0.85      0.85      0.85      2000
+
+2026-02-13 15:03:14,638 - __main__ - INFO - Training complete. Results saved to results
+2026-02-13 15:03:19,213 - __main__ - INFO - Starting adaptive gating ensemble training
+2026-02-13 15:03:19,213 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.utils.config - INFO - Random seeds set to 42
+2026-02-13 15:03:19,213 - __main__ - INFO - Loading dataset
+2026-02-13 15:03:19,213 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.data.loader - INFO - Loading dataset: synthetic_heterogeneous_benchmark
+2026-02-13 15:03:19,213 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.data.loader - INFO - Generating synthetic dataset with 10000 samples, 20 features
+2026-02-13 15:03:19,223 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.data.loader - INFO - Generated dataset shape: (10000, 20), class distribution: {1: 5023, 0: 4977}
+2026-02-13 15:03:19,223 - __main__ - INFO - Dataset loaded: 10000 samples, 20 features
+2026-02-13 15:03:19,223 - __main__ - INFO - Class distribution: {1: 5023, 0: 4977}
+2026-02-13 15:03:19,223 - __main__ - INFO - Splitting dataset
+2026-02-13 15:03:19,229 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.data.loader - INFO - Dataset split - Train: 7000, Val: 1000, Test: 2000
+2026-02-13 15:03:19,229 - __main__ - INFO - Initializing preprocessor
+2026-02-13 15:03:19,229 - __main__ - INFO - Initializing adaptive gating ensemble
+2026-02-13 15:03:19,229 - __main__ - INFO - Initializing trainer
+2026-02-13 15:03:19,229 - __main__ - INFO - Starting training
+2026-02-13 15:03:19,229 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.training.trainer - INFO - Starting ensemble training
+2026-02-13 15:03:20,686 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.training.trainer - INFO - MLflow tracking enabled
+2026-02-13 15:03:20,686 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.training.trainer - INFO - Preprocessing training data
+2026-02-13 15:03:20,686 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.data.preprocessing - INFO - Fitting preprocessor on training data
+2026-02-13 15:03:20,690 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.data.preprocessing - INFO - Preprocessor fitted on 20 features
+2026-02-13 15:03:20,696 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.models.model - INFO - Fitting adaptive gating ensemble on 7000 samples
+2026-02-13 15:03:20,696 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.models.model - INFO - Creating default base models (linear, tree-based, gradient boosting)
+2026-02-13 15:03:20,697 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.models.model - INFO - Training 4 base models
+2026-02-13 15:03:20,697 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.models.model - INFO - Training base model 0: LogisticRegression
+2026-02-13 15:03:20,705 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.models.model - INFO - Training base model 1: RandomForestClassifier
+2026-02-13 15:03:21,011 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.models.model - INFO - Training base model 2: XGBClassifier
+2026-02-13 15:03:43,381 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.models.model - INFO - Training base model 3: LGBMClassifier
+2026-02-13 15:04:34,714 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.models.model - INFO - Computing sample complexity indicators
+2026-02-13 15:04:34,717 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.models.model - INFO - Computing oracle model assignments
+2026-02-13 15:04:34,752 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.models.model - INFO - Oracle assignments distribution: {np.int64(0): np.int64(23), np.int64(1): np.int64(4263), np.int64(2): np.int64(2218), np.int64(3): np.int64(496)}
+2026-02-13 15:04:34,753 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.models.model - INFO - Training gating network
+2026-02-13 15:04:34,758 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.models.components - INFO - Training PyTorch gating network on 7000 samples
+2026-02-13 15:04:38,513 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.models.components - INFO - Epoch 20/200: train_loss=0.4954, val_loss=0.4380, val_acc=0.8400
+2026-02-13 15:04:41,087 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.models.components - INFO - Epoch 40/200: train_loss=0.4540, val_loss=0.4080, val_acc=0.8671
+2026-02-13 15:04:43,102 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.models.components - INFO - Epoch 60/200: train_loss=0.4263, val_loss=0.3925, val_acc=0.8829
+2026-02-13 15:04:44,956 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.models.components - INFO - Epoch 80/200: train_loss=0.3981, val_loss=0.3828, val_acc=0.8871
+2026-02-13 15:04:45,911 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.models.components - INFO - Early stopping at epoch 90
+2026-02-13 15:04:45,911 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.models.components - INFO - Gating network training complete. Best validation loss: 0.3828
+2026-02-13 15:04:45,912 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.models.model - INFO - Adaptive gating ensemble training complete
+2026-02-13 15:04:46,052 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.training.trainer - INFO - Training complete - Train F1: 0.9574, Val F1: 0.8500, Train Acc: 0.9574, Val Acc: 0.8500
+2026-02-13 15:04:46,114 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.training.trainer - INFO - Checkpoint saved to checkpoints/best_model.pkl
+2026-02-13 15:04:46,114 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.training.trainer - INFO - New best model saved with val_f1: 0.8500
+2026-02-13 15:04:46,131 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.training.trainer - INFO - Training history saved to results/training_history.json
+2026-02-13 15:04:46,131 - __main__ - INFO - Evaluating on test set
+2026-02-13 15:04:46,270 - __main__ - INFO - Test Accuracy: 0.8485
+2026-02-13 15:04:46,270 - __main__ - INFO - Test F1 Score: 0.8485
+2026-02-13 15:04:46,276 - __main__ - INFO - 
+Classification Report:
+              precision    recall  f1-score   support
+
+           0       0.84      0.86      0.85       995
+           1       0.86      0.84      0.85      1005
+
+    accuracy                           0.85      2000
+   macro avg       0.85      0.85      0.85      2000
+weighted avg       0.85      0.85      0.85      2000
+
+2026-02-13 15:04:46,276 - __main__ - INFO - Training complete. Results saved to results
