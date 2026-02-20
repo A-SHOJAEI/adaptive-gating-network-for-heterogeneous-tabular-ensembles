@@ -1,0 +1,5 @@
+{
+  "test_accuracy": 0.8485,
+  "test_f1": 0.8484935232438456,
+  "config": "configs/default.yaml"
+}

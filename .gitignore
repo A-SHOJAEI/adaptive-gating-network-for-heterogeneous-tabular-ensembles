@@ -22,6 +22,7 @@ wheels/
 
 # Virtual environments
 venv/
+.venv/
 ENV/
 env/
 test_env/
@@ -46,22 +47,14 @@ models/*.pkl
 models/*.joblib
 models/*.pt
 models/*.pth
-checkpoints/*.pkl
-checkpoints/*.joblib
-checkpoints/*.pt
-checkpoints/*.pth
 
 # Data
 data/raw/
 data/processed/
-*.csv
 *.parquet
 
-# Results
-results/*.json
-results/*.csv
-results/*.png
-results/*.pdf
+# MLflow database
+mlflow.db
 
 # MLflow
 mlruns/

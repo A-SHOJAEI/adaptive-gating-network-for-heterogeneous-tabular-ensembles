@@ -132,7 +132,7 @@ Performance on synthetic heterogeneous benchmark (10,000 samples, 20 features, b
 | Macro F1 | 0.8485 | Unweighted average F1 |
 | AUC | 0.9162 | Area under ROC curve |
 | Gating Accuracy | 0.8445 | Routing correctness vs oracle |
-| Routing Efficiency | 0.9144 | Fraction of optimal assignments |
+| Routing Efficiency | 0.9145 | Fraction of optimal assignments |
 | Complexity-Aware AUC | 0.9062 | AUC weighted by sample complexity |
 
 Training metrics:
@@ -141,7 +141,9 @@ Training metrics:
 - Validation accuracy: 0.8500
 - Validation F1: 0.8500
 
-The gating network converged in 90 epochs with early stopping, achieving 88.71% validation accuracy in predicting oracle model assignments. The ensemble demonstrates strong performance with 84.85% test accuracy and high routing efficiency (91.44%).
+The gating network converged in 90 epochs with early stopping, achieving 88.71% validation accuracy in predicting oracle model assignments. The ensemble demonstrates strong performance with 84.85% test accuracy and high routing efficiency (91.45%).
+
+*Results obtained on 2026-02-20 with random seed 42. Full metrics available in `results/results.json`.*
 
 ## Testing
 
