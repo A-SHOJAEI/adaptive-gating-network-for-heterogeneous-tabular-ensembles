@@ -447,3 +447,60 @@ Classification Report:
 weighted avg       0.85      0.85      0.85      2000
 
 2026-02-20 00:36:01,258 - __main__ - INFO - Training complete. Results saved to results
+2026-02-20 23:28:10,904 - __main__ - INFO - Starting adaptive gating ensemble training
+2026-02-20 23:28:10,904 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.utils.config - INFO - Random seeds set to 42
+2026-02-20 23:28:10,904 - __main__ - INFO - Loading dataset
+2026-02-20 23:28:10,904 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.data.loader - INFO - Loading dataset: synthetic_heterogeneous_benchmark
+2026-02-20 23:28:10,904 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.data.loader - INFO - Generating synthetic dataset with 10000 samples, 20 features
+2026-02-20 23:28:10,913 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.data.loader - INFO - Generated dataset shape: (10000, 20), class distribution: {1: 5023, 0: 4977}
+2026-02-20 23:28:10,913 - __main__ - INFO - Dataset loaded: 10000 samples, 20 features
+2026-02-20 23:28:10,913 - __main__ - INFO - Class distribution: {1: 5023, 0: 4977}
+2026-02-20 23:28:10,913 - __main__ - INFO - Splitting dataset
+2026-02-20 23:28:10,919 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.data.loader - INFO - Dataset split - Train: 7000, Val: 1000, Test: 2000
+2026-02-20 23:28:10,920 - __main__ - INFO - Initializing preprocessor
+2026-02-20 23:28:10,920 - __main__ - INFO - Initializing adaptive gating ensemble
+2026-02-20 23:28:10,920 - __main__ - INFO - Initializing trainer
+2026-02-20 23:28:10,920 - __main__ - INFO - Starting training
+2026-02-20 23:28:10,920 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.training.trainer - INFO - Starting ensemble training
+2026-02-20 23:28:12,413 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.training.trainer - INFO - MLflow tracking enabled
+2026-02-20 23:28:12,413 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.training.trainer - INFO - Preprocessing training data
+2026-02-20 23:28:12,413 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.data.preprocessing - INFO - Fitting preprocessor on training data
+2026-02-20 23:28:12,416 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.data.preprocessing - INFO - Preprocessor fitted on 20 features
+2026-02-20 23:28:12,423 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.models.model - INFO - Fitting adaptive gating ensemble on 7000 samples
+2026-02-20 23:28:12,423 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.models.model - INFO - Creating default base models (linear, tree-based, gradient boosting)
+2026-02-20 23:28:12,423 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.models.model - INFO - Training 4 base models
+2026-02-20 23:28:12,423 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.models.model - INFO - Training base model 0: LogisticRegression
+2026-02-20 23:28:12,433 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.models.model - INFO - Training base model 1: RandomForestClassifier
+2026-02-20 23:28:12,699 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.models.model - INFO - Training base model 2: XGBClassifier
+2026-02-20 23:28:24,114 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.models.model - INFO - Training base model 3: LGBMClassifier
+2026-02-20 23:28:48,039 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.models.model - INFO - Computing sample complexity indicators
+2026-02-20 23:28:48,041 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.models.model - INFO - Computing oracle model assignments
+2026-02-20 23:28:48,075 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.models.model - INFO - Oracle assignments distribution: {np.int64(0): np.int64(23), np.int64(1): np.int64(4263), np.int64(2): np.int64(2218), np.int64(3): np.int64(496)}
+2026-02-20 23:28:48,075 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.models.model - INFO - Training gating network
+2026-02-20 23:28:48,118 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.models.components - INFO - Training PyTorch gating network on 7000 samples
+2026-02-20 23:28:50,462 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.models.components - INFO - Epoch 20/200: train_loss=0.5026, val_loss=0.4413, val_acc=0.8400
+2026-02-20 23:28:52,148 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.models.components - INFO - Epoch 40/200: train_loss=0.4527, val_loss=0.4207, val_acc=0.8614
+2026-02-20 23:28:53,851 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.models.components - INFO - Epoch 60/200: train_loss=0.4351, val_loss=0.4133, val_acc=0.8686
+2026-02-20 23:28:55,543 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.models.components - INFO - Epoch 80/200: train_loss=0.4205, val_loss=0.4080, val_acc=0.8786
+2026-02-20 23:28:56,424 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.models.components - INFO - Early stopping at epoch 89
+2026-02-20 23:28:56,424 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.models.components - INFO - Gating network training complete. Best validation loss: 0.4018
+2026-02-20 23:28:56,425 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.models.model - INFO - Adaptive gating ensemble training complete
+2026-02-20 23:28:56,544 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.training.trainer - INFO - Training complete - Train F1: 0.9576, Val F1: 0.8520, Train Acc: 0.9576, Val Acc: 0.8520
+2026-02-20 23:28:56,615 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.training.trainer - INFO - Checkpoint saved to checkpoints/best_model.pkl
+2026-02-20 23:28:56,615 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.training.trainer - INFO - New best model saved with val_f1: 0.8520
+2026-02-20 23:28:56,630 - adaptive_gating_network_for_heterogeneous_tabular_ensembles.training.trainer - INFO - Training history saved to results/training_history.json
+2026-02-20 23:28:56,630 - __main__ - INFO - Evaluating on test set
+2026-02-20 23:28:56,758 - __main__ - INFO - Test Accuracy: 0.8500
+2026-02-20 23:28:56,758 - __main__ - INFO - Test F1 Score: 0.8500
+2026-02-20 23:28:56,763 - __main__ - INFO - 
+Classification Report:
+              precision    recall  f1-score   support
+
+           0       0.84      0.86      0.85       995
+           1       0.86      0.84      0.85      1005
+
+    accuracy                           0.85      2000
+   macro avg       0.85      0.85      0.85      2000
+weighted avg       0.85      0.85      0.85      2000
+
+2026-02-20 23:28:56,763 - __main__ - INFO - Training complete. Results saved to results

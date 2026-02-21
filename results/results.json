@@ -18,24 +18,24 @@
     "gating_iterations": 200,
     "use_complexity_loss": true,
     "base_models": ["LogisticRegression", "RandomForestClassifier", "XGBClassifier", "LGBMClassifier"],
-    "early_stopping_epoch": 90
+    "early_stopping_epoch": 89
   },
   "training_metrics": {
-    "train_accuracy": 0.9574,
-    "train_f1": 0.9574,
-    "val_accuracy": 0.8500,
-    "val_f1": 0.8500
+    "train_accuracy": 0.9576,
+    "train_f1": 0.9576,
+    "val_accuracy": 0.8520,
+    "val_f1": 0.8520
   },
   "test_metrics": {
-    "test_accuracy": 0.8485,
-    "test_f1": 0.8485,
-    "macro_f1": 0.8485,
-    "weighted_precision": 0.8486,
-    "weighted_recall": 0.8485,
-    "auc": 0.9162,
-    "gating_accuracy": 0.8445,
-    "routing_efficiency": 0.9145,
-    "complexity_aware_auc": 0.9062
+    "test_accuracy": 0.8500,
+    "test_f1": 0.8500,
+    "macro_f1": 0.8500,
+    "weighted_precision": 0.8502,
+    "weighted_recall": 0.8500,
+    "auc": 0.9171,
+    "gating_accuracy": 0.8455,
+    "routing_efficiency": 0.9155,
+    "complexity_aware_auc": 0.9070
   },
   "per_class_metrics": {
     "class_0": {
@@ -58,10 +58,10 @@
     "LGBMClassifier": 496
   },
   "gating_network": {
-    "best_val_loss": 0.3828,
-    "early_stopping_epoch": 90,
+    "best_val_loss": 0.4018,
+    "early_stopping_epoch": 89,
     "max_epochs": 200,
-    "val_accuracy_at_stop": 0.8871
+    "val_accuracy_at_stop": 0.8786
   },
   "random_seed": 42,
   "training_date": "2026-02-20"
